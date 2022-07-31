@@ -5,12 +5,13 @@ module.exports = {
     specPattern: 'cypress/e2e',
     excludeSpecPattern: '**/*.+(exercise|final|extra-)*.js',
     setupNodeEvents(on, config) {
-      const isDev = config.watchForFileChanges
-      if (!isCI) {
-        config.baseUrl = isDev
-          ? 'http://localhost:3000'
-          : 'http://localhost:8811'
-      }
+      // why 8811 in CI? Maybe Netlify related
+      // const isDev = config.watchForFileChanges
+      // if (!isCI) {
+      //   config.baseUrl = isDev
+      //     ? 'http://localhost:3000'
+      //     : 'http://localhost:8811'
+      // }
       return config
     },
   },
