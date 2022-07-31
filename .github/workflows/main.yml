@@ -82,13 +82,12 @@ jobs:
           start: npm start
           wait-on: 'http://localhost:3000'
           browser: chrome
-          # ran out of monthly Cypress Dashboard limit
-          # record: true
+          record: true
           # parallel: true
-          # group: e2e-tests
-          # tag: e2e-tests
+          group: e2e-tests
+          tag: e2e-tests
         env:
-          # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Upload artifacts (Coverage_step3)
