@@ -74,6 +74,7 @@
     "cy:install": "cypress install",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
+    "cy:open-e2e": "cypress open --e2e --browser chrome",
     "test:e2e": "start-server-and-test start:cli http://localhost:3000/list cy:open",
     "test:e2e:run": "start-server-and-test serve http://localhost:8811/list cy:run",
     "serve": "serve --no-clipboard --single --listen 8811 build",

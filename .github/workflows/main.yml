@@ -1,0 +1,152 @@
+name: Build, Lint, e2e & ct test
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  install-dependencies:
+    name: Install Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'npm'
+          node-version: 16.10.0
+      - uses: bahmutov/npm-install@v1.8.17
+        with: {useRollingCache: true} # recommended for large projects
+        env:
+          CYPRESS_INSTALL_BINARY: 0 # no need to install the Cypress binary, we are already using the docker image in the e2e job
+
+  unit-test:
+    needs: [install-dependencies]
+    name: Run Unit Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: bahmutov/npm-install@v1.8.17
+        with: {useRollingCache: true}
+        env:
+          CYPRESS_INSTALL_BINARY: 0
+      - name: unit-test
+        run: npm test
+
+      # - name: Upload artifacts
+      #   uses: actions/upload-artifact@v3.1.0
+      #   with:
+      #     name: coverage
+      #     path: coverage/
+      #     retention-days: 1
+      # - name: ✅ Upload Jest coverage to Codecov
+      #   uses: codecov/codecov-action@v3
+      #   with:
+      #     directory: coverage/
+      #     flags: unit-test-coverage
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+
+  lint:
+    needs: install-dependencies
+    name: Run Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: bahmutov/npm-install@v1.8.17
+        with: {useRollingCache: true}
+        env:
+          CYPRESS_INSTALL_BINARY: 0
+      - name: lint
+        run: npm run lint
+
+  cypress-e2e-test:
+    # ran out od parallelization
+    # strategy:
+    #   matrix:
+    #     machines: [1, 2]
+    needs: [install-dependencies]
+    runs-on: ubuntu-latest
+    container: cypress/included:10.3.1 # save time on not having to install cypress
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: bahmutov/npm-install@v1.8.17 # save time on dependencies
+        with: {useRollingCache: true}
+
+      - name: Cypress e2e tests 🧪
+        uses: cypress-io/github-action@v4.2.0
+        with:
+          install: false # no need to install because of the above 2
+          start: npm start
+          wait-on: 'http://localhost:3000'
+          browser: chrome
+          record: true
+          # parallel: true
+          group: e2e-tests
+          tag: e2e-tests
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: Upload artifacts (Coverage_step3)
+      #   uses: actions/upload-artifact@v3.1.0
+      #   with:
+      #     name: coverage-cy-e2e
+      #     path: coverage-cy/
+      #     retention-days: 1
+
+      # - name: ✅ Upload e2e coverage to Codecov
+      #   uses: codecov/codecov-action@v3
+      #   with:
+      #     directory: coverage-cy/
+      #     flags: cypress-e2e-coverage
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+
+  # This is just a copy of the above with 2 additional args for visual testing
+
+  # cypress-ct-test:
+  #   # ran out of parallelization
+  #   # strategy:
+  #   #   matrix:
+  #   #     machines: [1, 2] # increase to 2 later: [1, 2]
+  #   needs: [install-dependencies]
+  #   runs-on: ubuntu-latest
+  #   container: cypress/included:10.3.1 # save time on not having to install cypress
+  #   steps:
+  #     - uses: actions/checkout@v3
+
+  #     - uses: bahmutov/npm-install@v1.8.17 # save time on dependencies
+  #       with: {useRollingCache: true}
+
+  #     - name: Cypress component tests 🧪
+  #       uses: cypress-io/github-action@v4.2.0
+  #       with:
+  #         # we have already installed everything
+  #         install: false
+  #         component: true
+  #         browser: chrome
+  #       env:
+  #         # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  #     # - name: Copy the coverage to coverage-part (Coverage_step2)
+  #     # Same as the e2e job, but for component tests.
+  #     # run: (mkdir coverage-part || true) && cp coverage-cy/coverage-final.json coverage-part/$GITHUB_JOB-$GITHUB_RUN_ID.json
+  #     # test short name
+  #     # run: (mkdir coverage-part || true) && cp coverage-cy/coverage-final.json coverage-part/coverage-final-ct.json
+
+  #     - name: Upload artifacts (Coverage_step3)
+  #       uses: actions/upload-artifact@v3.1.0
+  #       with:
+  #         name: coverage-cy-ct
+  #         path: coverage-cy/
+  #         retention-days: 1
+
+  #     - name: ✅ Upload CT coverage to Codecov
+  #       uses: codecov/codecov-action@v3
+  #       with:
+  #         directory: coverage-cy/
+  #         flags: cypress-ct-coverage
+  #         token: ${{ secrets.CODECOV_TOKEN }}
