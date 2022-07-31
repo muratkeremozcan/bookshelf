@@ -1,8 +1,13 @@
-const isCI = require('is-ci')
+const {defineConfig} = require('cypress')
+// const isCI = require('is-ci')
 
-module.exports = {
+module.exports = defineConfig({
+  projectId: 'r9paau',
+  retries: {
+    runMode: 2,
+    openMode: 0,
+  },
   e2e: {
-    specPattern: 'cypress/e2e',
     excludeSpecPattern: '**/*.+(exercise|final|extra-)*.js',
     setupNodeEvents(on, config) {
       // why 8811 in CI? Maybe Netlify related
@@ -14,5 +19,7 @@ module.exports = {
       // }
       return config
     },
+    baseUrl: 'http://localhost:3000',
+    specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
   },
-}
+})
