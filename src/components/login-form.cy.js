@@ -5,8 +5,13 @@ import {Button} from './lib'
 import * as hooks from '../utils/hooks'
 
 describe('LoginForm', () => {
+  let stub
+  const user = buildUser()
+  beforeEach(() => {
+    stub = cy.stub().as('onSubmit').resolves(true)
+  })
+
   it('should submit username and password on login', () => {
-    const stub = cy.stub().as('onSubmit').resolves(true)
     cy.mount(
       <LoginForm
         onSubmit={stub}
@@ -14,7 +19,6 @@ describe('LoginForm', () => {
       />,
     )
 
-    const user = buildUser()
     cy.findByRole('textbox', {name: /username/i}).type(user.username)
     cy.findByLabelText(/password/i).type(user.password)
     cy.get('[type="submit"]').click()
@@ -25,12 +29,21 @@ describe('LoginForm', () => {
     })
   })
 
-  it('should render Spinner when isLoading', () => {
-    // TODO: find out how we would stub what the hook returns so that we can test isLoading and isError cases
-    cy.stub(hooks, 'useAsync').returns({isLoading: true, isError: true})
-
+  it('should submit username and password on register', () => {
     cy.mount(
-      <LoginForm submitButton={<Button variant="secondary">Login</Button>} />,
+      <LoginForm
+        onSubmit={stub}
+        submitButton={<Button variant="secondary">Register</Button>}
+      />,
     )
+
+    cy.findByRole('textbox', {name: /username/i}).type(user.username)
+    cy.findByLabelText(/password/i).type(user.password)
+    cy.get('[type="submit"]').click()
+
+    cy.get('@onSubmit').should('have.been.calledWith', {
+      username: user.username,
+      password: user.password,
+    })
   })
 })
