@@ -48,7 +48,7 @@ function DiscoverBooksScreen() {
                 }}
               >
                 {isLoading ? (
-                  <Spinner />
+                  <Spinner data-cy="search-spinner" />
                 ) : isError ? (
                   <FaTimes aria-label="error" css={{color: colors.danger}} />
                 ) : (
@@ -72,7 +72,7 @@ function DiscoverBooksScreen() {
             <p>Welcome to the discover page.</p>
             <p>Here, let me load a few books for you...</p>
             {isLoading ? (
-              <div css={{width: '100%', margin: 'auto'}}>
+              <div data-cy="spinner" css={{width: '100%', margin: 'auto'}}>
                 <Spinner />
               </div>
             ) : isSuccess && books.length ? (
@@ -89,7 +89,7 @@ function DiscoverBooksScreen() {
             id="Discover Books Screen Book List"
             metadata={{query, bookCount: books.length}}
           >
-            <BookListUL css={{marginTop: 20}}>
+            <BookListUL data-cy="book-list" css={{marginTop: 20}}>
               {books.map(book => (
                 <li key={book.id} aria-label={book.title}>
                   <BookRow key={book.id} book={book} />

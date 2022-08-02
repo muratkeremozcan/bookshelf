@@ -30,7 +30,7 @@ describe('LoginForm', () => {
     cy.stub(hooks, 'useAsync').returns({isLoading: true, isError: true})
 
     cy.mount(
-      <LoginForm submitButton={<Button variant="primary">Login</Button>} />,
+      <LoginForm submitButton={<Button variant="secondary">Login</Button>} />,
     )
   })
 })

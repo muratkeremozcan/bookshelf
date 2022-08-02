@@ -1,9 +1,27 @@
+// [2.1] to use css prop (apply styles to a component)
+// import jsx, use the jsx comment, then use the css prop in the component
+/*
+function SomeComponent() {
+  return (
+    <div
+      css={{
+        backgroundColor: 'red'
+        },
+      }}
+    >
+  )
+}
+*/
+
 /** @jsx jsx */
-import {jsx} from '@emotion/core'
+import {jsx, keyframes} from '@emotion/core'
 
 import {Link as RouterLink} from 'react-router-dom'
+// [2.0] to make a styled component (a component that carries its styles with it)
+// import styled,
+// use object notation: const Button = styled.button({ color: red })
+// use functions:       const Button = styled.button({ variant = 'primary'}) => variant === 'primary' ? {color: red} : {color: blue})
 import styled from '@emotion/styled/macro'
-import {keyframes} from '@emotion/core'
 import * as colors from 'styles/colors'
 import * as mq from 'styles/media-queries'
 import {Dialog as ReachDialog} from '@reach/dialog'
