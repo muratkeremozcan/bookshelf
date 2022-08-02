@@ -33,7 +33,11 @@ function UnauthenticatedApp() {
           <ModalOpenButton>
             <Button variant="primary">Login</Button>
           </ModalOpenButton>
-          <ModalContents aria-label="Login form" title="Login">
+          <ModalContents
+            data-cy="login-form"
+            aria-label="Login form"
+            title="Login"
+          >
             <LoginForm
               onSubmit={login}
               submitButton={<Button variant="primary">Login</Button>}
@@ -44,7 +48,11 @@ function UnauthenticatedApp() {
           <ModalOpenButton>
             <Button variant="secondary">Register</Button>
           </ModalOpenButton>
-          <ModalContents aria-label="Registration form" title="Register">
+          <ModalContents
+            data-cy="register-form"
+            aria-label="Registration form"
+            title="Register"
+          >
             <LoginForm
               onSubmit={register}
               submitButton={<Button variant="secondary">Register</Button>}

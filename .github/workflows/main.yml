@@ -125,6 +125,9 @@ jobs:
           install: false
           component: true
           browser: chrome
+          record: true
+          group: ct-tests
+          tag: ct-tests
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

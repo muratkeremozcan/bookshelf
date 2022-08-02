@@ -1,0 +1,40 @@
+{
+  "listItems": [
+    {
+      "id": "73074367",
+      "bookId": "618645616",
+      "ownerId": "177604",
+      "rating": -1,
+      "notes": "good book\n",
+      "finishDate": null,
+      "startDate": 1658929700074,
+      "book": {
+        "title": "The Lord of the Rings",
+        "author": "J. R. R. Tolkien",
+        "coverImageUrl": "https://images-na.ssl-images-amazon.com/images/I/51r6XIPWmoL._SX331_BO1,204,203,200_.jpg",
+        "id": "618645616",
+        "pageCount": 1178,
+        "publisher": "Houghton Mifflin Harcourt",
+        "synopsis": "In ancient times the Rings of Power were crafted by the Elven-smiths, and Sauron, the Dark Lord, forged the One Ring, filling it with his own power so that he could rule all others. But the One Ring was taken from him, and though he sought it throughout Middle-earth, it remained lost to him. After many ages it fell by chance into the hands of the hobbit Bilbo Baggins."
+      }
+    },
+    {
+      "id": "3163086721",
+      "bookId": "059035342X",
+      "ownerId": "177604",
+      "rating": -1,
+      "notes": "",
+      "finishDate": 1658994750928,
+      "startDate": 1658994070290,
+      "book": {
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "author": "J. K. Rowling",
+        "coverImageUrl": "https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg",
+        "id": "059035342X",
+        "pageCount": 309,
+        "publisher": "Scholastic",
+        "synopsis": "Harry Potter has no idea how famous he is. That's because he's being raised by his miserable aunt and uncle who are terrified Harry will learn that he's really a wizard, just as his parents were. But everything changes when Harry is summoned to attend an infamous school for wizards, and he begins to discover some clues about his illustrious birthright. From the surprising way he is greeted by a lovable giant, to the unique curriculum and colorful faculty at his unusual school, Harry finds himself drawn deep inside a mystical world he never knew existed and closer to his own noble destiny."
+      }
+    }
+  ]
+}
