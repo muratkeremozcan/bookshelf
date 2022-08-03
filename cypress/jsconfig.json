@@ -3,7 +3,7 @@
   "compilerOptions": {
     // be explicit about types included
     // to avoid clashing with Jest types
-    "types": ["cypress"]
+    "types": ["cypress", "cypress-real-events"]
   },
   "include": ["../node_modules/cypress", "./**/*.js"]
 }

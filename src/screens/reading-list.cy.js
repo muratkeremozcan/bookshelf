@@ -1,26 +1,24 @@
 import React from 'react'
-import {DiscoverBooksScreen} from './discover'
+import {ReadingListScreen} from './reading-list'
 import {AuthProvider} from '../context/auth-context'
 import {BrowserRouter as Router} from 'react-router-dom'
 import '@reach/tooltip/styles.css'
 
-describe('DiscoverBooksScreen', () => {
-  it('should render the spinner and then a list of books', () => {
+describe('ReadingListScreen', () => {
+  it('should render ', () => {
     cy.intercept('GET', /list-items/, {fixture: 'list-items'}).as('list-items')
-    cy.intercept('GET', /query/, {fixture: 'books'}).as('books')
     cy.intercept('POST', /profile/, {body: {success: true}}).as('profile')
 
     cy.mount(
       <Router>
         <AuthProvider>
-          <DiscoverBooksScreen />
+          <ReadingListScreen />
         </AuthProvider>
       </Router>,
     )
-    cy.getByCy('search-spinner').should('exist')
-    cy.getByCy('spinner').should('exist')
-    cy.wait('@list-items')
 
-    cy.getByCy('book-list').should('be.visible')
+    cy.contains('p', 'Hey')
+    cy.wait('@list-items')
+    cy.getByClassLike('BookListUL').should('be.visible')
   })
 })
