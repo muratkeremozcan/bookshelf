@@ -1,10 +1,11 @@
 import React from 'react'
-import {ListItemList} from './list-item-list'
+import {Rating} from './rating'
 import {AuthProvider} from '../context/auth-context'
 import {BrowserRouter as Router} from 'react-router-dom'
 import '@reach/tooltip/styles.css'
+const {book} = require('../../cypress/fixtures/book.json')
 
-describe('ListItemList', {viewportWidth: 600}, () => {
+describe('Rating', {viewportWidth: 600}, () => {
   it('should render ', () => {
     cy.intercept('GET', /list-items/, {fixture: 'list-items'}).as('list-items')
     cy.intercept('POST', /profile/, {body: {success: true}}).as('profile')
@@ -19,20 +20,13 @@ describe('ListItemList', {viewportWidth: 600}, () => {
     cy.mount(
       <Router>
         <AuthProvider>
-          <ListItemList
-            filterListItems={li => Boolean(li.finishDate)}
-            noListItems={<p>foo</p>}
-          />
+          <Rating listItem={book} />
         </AuthProvider>
       </Router>,
     )
 
-    cy.getByClassLike('BookRow').should('be.visible')
-
-    cy.getByClassLike('TooltipButton').first().click()
-    cy.wait('@list-items-put')
-
-    cy.getByClassLike('TooltipButton').last().click()
-    cy.wait('@list-items-delete')
+    cy.getByClassLike('Rating')
+      .should('be.visible')
+      .within(() => cy.get('label').should('have.length', 5))
   })
 })
