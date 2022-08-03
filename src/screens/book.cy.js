@@ -10,7 +10,6 @@ describe('BookScreen', {viewportHeight: 900}, () => {
     cy.intercept('POST', /profile/, {body: {success: true}}).as('profile')
     cy.intercept('GET', '**/books/*', {fixture: 'book'}).as('book')
     cy.mount(
-      // <Router>
       <AuthProvider>
         <BookScreen />
       </AuthProvider>,
