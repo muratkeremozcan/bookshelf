@@ -4,7 +4,7 @@ import * as colors from 'styles/colors'
 import {FaPlusCircle} from 'react-icons/fa'
 
 describe('TooltipButton', () => {
-  it('should render', () => {
+  it('should show label on hover and call onClick when clicked', () => {
     const label = 'Add to list'
     cy.mount(
       <TooltipButton
