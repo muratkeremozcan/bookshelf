@@ -2,6 +2,7 @@ import React from 'react'
 import {DiscoverBooksScreen} from './discover'
 import {AuthProvider} from '../context/auth-context'
 import {BrowserRouter as Router} from 'react-router-dom'
+import '@reach/tooltip/styles.css'
 
 describe('DiscoverBooksScreen', () => {
   it('should render books', () => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import UnauthenticatedApp from 'unauthenticated-app'
 import {AuthProvider} from './context/auth-context'
+import '@reach/dialog/styles.css'
 
 describe(
   'UnauthenticatedApp',
@@ -13,15 +14,15 @@ describe(
         </AuthProvider>,
       )
 
-      cy.contains('Button', /login/i).click()
+      cy.contains('Button', /login/i).click({force: true})
       cy.getByCy('login-form').should('be.visible')
 
-      cy.contains('Button', /register/i).click()
+      cy.contains('Button', /register/i).click({force: true})
       cy.getByCy('register-form').should('be.visible')
 
       cy.getByClassLike('CircleButton')
         .should('have.length', 2)
-        .click({multiple: true})
+        .click({multiple: true, force: true})
 
       cy.getByCy('login-form').should('not.exist')
       cy.getByCy('register-form').should('not.exist')
