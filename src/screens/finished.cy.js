@@ -16,9 +16,8 @@ describe('FinishedScreen', () => {
         </AuthProvider>
       </Router>,
     )
-    cy.getByClassLike('Link').should('be.visible')
 
     cy.wait('@list-items')
-    cy.getByClassLike('ListItemList').should('be.visible')
+    cy.contains('Harry Potter')
   })
 })

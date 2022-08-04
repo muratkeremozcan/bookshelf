@@ -2,6 +2,12 @@ import {queryCache} from 'react-query'
 import * as auth from 'auth-provider'
 const apiURL = process.env.REACT_APP_API_URL
 
+// [3] HTTP
+// to request backend data, use fetch or axios
+// wrap these in your own function
+// Integrating with React utilize React's useEffect hook for making the request
+// and useState for managing the status of the request & response data and error information.
+
 async function client(
   endpoint,
   {data, token, headers: customHeaders, ...customConfig} = {},

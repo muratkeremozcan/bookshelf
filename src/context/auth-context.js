@@ -9,6 +9,15 @@ import {useAsync} from 'utils/hooks'
 import {setQueryDataForBook} from 'utils/books'
 import {FullPageSpinner, FullPageErrorFallback} from 'components/lib'
 
+// [4] Authentication  https://kentcdodds.com/blog/authentication-in-react-applications
+// the user doesn't want to submit their password every time they need to make a request
+// we don't want to store the user's password and send that with every request.
+// So we use a special limited use "token" which represents the user's current session
+// Every request the client makes must include this token to make authenticated requests.
+// This is one reason it's so nice to have a small wrapper around http utilities (ex: bootstrapAppData)
+// (1) Call some API to retrieve a token
+// (2) If there's a token, then send it along with the requests you make
+
 async function bootstrapAppData() {
   let user = null
 
