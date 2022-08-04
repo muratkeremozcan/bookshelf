@@ -7,6 +7,10 @@ import {Logo} from './components/logo'
 import {useAuth} from './context/auth-context'
 import LoginForm from './components/login-form'
 
+// [4.2] to manage displaying the right content to the user based on whether they've logged in,
+// is to split your app into two parts: Authenticated, and Unauthenticated.
+// Then you choose which to render based on whether you have the user's information.
+
 function UnauthenticatedApp() {
   const {login, register} = useAuth()
   return (

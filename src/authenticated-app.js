@@ -62,6 +62,7 @@ function AuthenticatedApp() {
         </div>
         <main css={{width: '100%'}}>
           <ErrorBoundary FallbackComponent={ErrorFallback}>
+            {/* [5.1] */}
             <AppRoutes />
           </ErrorBoundary>
         </main>
