@@ -60,7 +60,7 @@
     "prettier": "2.7.1",
     "react-test-renderer": "18.2.0",
     "resolve": "1.22.1",
-    "serve": "13.0.2",
+    "serve": "13.0.4",
     "start-server-and-test": "1.14.0",
     "whatwg-fetch": "3.6.2"
   },
