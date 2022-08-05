@@ -5,7 +5,7 @@ of my own and Cypress component tests. It's meant to be used as an experimental
 learning resource. All contributions are welcome.
 
 ```bash
-npm i --registry https://registry.yarnpkg.com # specify the registry in case you are using a proprietary registry
+npm i --registry https://registry.npmjs.org  # specify the registry in case you are using a proprietary registry
 
 # no need to have server running for these:
 npm run cy:open-ct # for cypress component test runner
