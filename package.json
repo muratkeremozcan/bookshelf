@@ -20,7 +20,7 @@
     "bootstrap": "5.2.0",
     "codegen.macro": "4.1.0",
     "debounce-fn": "4.0.0",
-    "faker": "5.5.3",
+    "faker": "6.6.6",
     "history": "5.3.0",
     "match-sorter": "6.3.1",
     "msw": "0.42.1",
