@@ -3,6 +3,8 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import {ReactQueryConfigProvider} from 'react-query'
 import {AuthProvider} from './auth-context'
 
+// [5.3] if we want to configure react query, we can wrap the app with ReactQueryConfigProvider
+// https://epicreact.dev/modules/build-an-epic-react-app/cache-management-extra-credit-solution-02
 const queryConfig = {
   queries: {
     useErrorBoundary: true,

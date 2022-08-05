@@ -1,11 +1,10 @@
-import {StatusButtons} from './status-buttons'
-import React from 'react'
+import * as React from 'react'
+import NotesTextarea from './notes-text-area'
 import {AuthProvider} from '../context/auth-context'
-import '@reach/tooltip/styles.css'
-const {book} = require('../../cypress/fixtures/book.json')
+const {listItems} = require('../../cypress/fixtures/list-items.json')
 
-describe('StatusButtons', () => {
-  it('should show status buttons', () => {
+describe('NotesTextarea', () => {
+  it('should render text area', () => {
     cy.intercept('GET', /list-items/, {fixture: 'list-items'}).as('list-items')
     cy.intercept('POST', /profile/, {body: {success: true}}).as('profile')
     cy.intercept('GET', '**/book/*', {fixture: 'book'}).as('book')
@@ -15,18 +14,15 @@ describe('StatusButtons', () => {
     cy.intercept('DELETE', /list-items/, {body: {success: true}}).as(
       'list-items-delete',
     )
+
     cy.mount(
       <AuthProvider>
-        <StatusButtons book={book} />
+        <NotesTextarea listItem={listItems} />
       </AuthProvider>,
     )
 
-    cy.getByClassLike('TooltipButton').should('have.length', 2)
-
-    cy.getByClassLike('TooltipButton').first().click()
-    cy.wait('@list-items-put')
-
-    cy.getByClassLike('TooltipButton').last().click()
-    cy.wait('@list-items-delete')
+    cy.get('#notes').should('be.visible')
+    // TODO: look into typing into the notes and seeing
+    // There was an error: Cannot read properties of undefined (reading 'map')
   })
 })

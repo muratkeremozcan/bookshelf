@@ -22,7 +22,7 @@ function StatusButtons({book}) {
   const [handleAddClick] = useCreateListItem({throwOnError: true})
 
   return (
-    <React.Fragment>
+    <>
       {listItem ? (
         Boolean(listItem.finishDate) ? (
           <TooltipButton
@@ -55,7 +55,7 @@ function StatusButtons({book}) {
           icon={<FaPlusCircle />}
         />
       )}
-    </React.Fragment>
+    </>
   )
 }
 

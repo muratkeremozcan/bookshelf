@@ -76,6 +76,7 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "cy:open-e2e": "server-test 3000 'cypress open --e2e --browser chrome'",
+    "cy:run-e2e": "server-test 3000 'cypress run --e2e --browser chrome'",
     "cy:open-ct": "cypress open --component --browser chrome",
     "cy:run-ct": "cypress run --component --browser chrome",
     "test:e2e": "start-server-and-test start:cli http://localhost:3000/list cy:open",
