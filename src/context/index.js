@@ -21,6 +21,7 @@ function AppProviders({children}) {
   return (
     <ReactQueryConfigProvider config={queryConfig}>
       <Router>
+        {/* / [7.1] wrap the UI with the context’s Provider component, using the state as a prop */}
         <AuthProvider>{children}</AuthProvider>
       </Router>
     </ReactQueryConfigProvider>

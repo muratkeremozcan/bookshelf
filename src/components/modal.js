@@ -5,10 +5,20 @@ import * as React from 'react'
 import VisuallyHidden from '@reach/visually-hidden'
 import {Dialog, CircleButton} from './lib'
 
+/** a function that accepts any number of functions,
+ * and returns a function that accepts any number of arguments.
+ * Then when that's called for each of the functions that were passed,
+ * if that function does exist, then we'll call that function with all of the arguments this function was called with.
+ */
 const callAll =
   (...fns) =>
   (...args) =>
-    fns.forEach(fn => fn && fn(...args))
+    fns.map(fn => fn && fn(...args))
+
+// [8] Compound components
+// to avoid custom components with loads of props, take advantage of the context api
+// pass useState values as a value prop of the context provider
+// to implicitly share some state between the sub components
 
 const ModalContext = React.createContext()
 
