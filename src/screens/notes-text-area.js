@@ -12,7 +12,6 @@ export default function NotesTextarea({listItem}) {
   )
 
   function handleNotesChange(e) {
-    console.log('yo')
     debouncedMutate({id: listItem.id, notes: e.target.value})
   }
 

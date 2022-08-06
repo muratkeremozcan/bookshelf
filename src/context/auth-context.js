@@ -35,9 +35,15 @@ async function bootstrapAppData() {
   return user
 }
 
+// [7] Context
+// Context api lets us pass a value deep into the component tree
+// without explicitly threading it through every component (prop drilling)
+// [7.0] create the context with createContext()
 const AuthContext = React.createContext()
 AuthContext.displayName = 'AuthContext'
 
+// [7.1] wrap the UI with the context’s Provider component, using the state as a prop
+// the values that the hook gets (useAuth) are enabled here
 function AuthProvider(props) {
   const {
     data: user,
@@ -90,6 +96,12 @@ function AuthProvider(props) {
   throw new Error(`Unhandled status: ${status}`)
 }
 
+// [7.2] utilize the useContext(theContext) hook
+// identify what components may need in common (ex: Auth)
+// Manage state and effects related to a hook’s functionality within the hook and return only the value(s) that components need
+// note: it's annoying to have to pass the AuthContext around to React.useContext
+// and if someone were to accidentally use React.useContext(AuthContext) without rendering AuthContext.Provider,
+// they would get a pretty unhelpful error message about not being able to destructure undefined.
 function useAuth() {
   const context = React.useContext(AuthContext)
   if (context === undefined) {
