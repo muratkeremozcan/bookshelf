@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {jsx} from '@emotion/core'
+import {jsx} from '@emotion/react'
 
 import {useParams} from 'react-router-dom'
 import {useBook} from 'utils/books'
