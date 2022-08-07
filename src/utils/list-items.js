@@ -65,7 +65,7 @@ function onUpdateMutation(newItem) {
   const previousItems = queryCache.getQueryData('list-items')
 
   queryCache.setQueryData('list-items', old => {
-    return old.map(item => {
+    return old?.map(item => {
       return item.id === newItem.id ? {...item, ...newItem} : item
     })
   })

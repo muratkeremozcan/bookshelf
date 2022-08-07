@@ -74,6 +74,7 @@ function Rating({listItem}) {
         />
         <label
           htmlFor={ratingId}
+          data-cy={`rating-${ratingValue}`}
           css={{
             cursor: 'pointer',
             color: listItem.rating < 0 ? colors.gray20 : colors.orange,

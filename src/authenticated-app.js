@@ -25,6 +25,8 @@ function ErrorFallback({error}) {
 
 function AuthenticatedApp() {
   const {user, logout} = useAuth()
+
+  // [9.3] Error boundary is a way for the app to show common error when lazy loaded components fail to load
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
       <div
