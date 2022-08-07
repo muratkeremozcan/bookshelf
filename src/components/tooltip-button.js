@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {jsx} from '@emotion/core'
+import {jsx} from '@emotion/react'
 
 import {FaTimesCircle} from 'react-icons/fa'
 import Tooltip from '@reach/tooltip'

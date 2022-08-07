@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {jsx} from '@emotion/core'
+import {jsx} from '@emotion/react'
 
 import {Link as RouterLink, useMatch} from 'react-router-dom'
 import * as mq from './styles/media-queries'

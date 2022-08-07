@@ -14,7 +14,7 @@ function SomeComponent() {
 */
 
 /** @jsx jsx */
-import {jsx, keyframes} from '@emotion/core'
+import {jsx, keyframes} from '@emotion/react'
 
 import {Link as RouterLink} from 'react-router-dom'
 // [2.0] to make a styled component (a component that carries its styles with it)
