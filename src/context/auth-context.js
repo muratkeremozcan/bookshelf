@@ -62,6 +62,9 @@ function AuthProvider(props) {
     run(appDataPromise)
   }, [run])
 
+  // [9.4] If a context provider re-renders with a different value from the previous render, all consumers will re-render.
+  // we only want the context provider to re-render when the state changes
+  // there we memoize
   const login = React.useCallback(
     form => auth.login(form).then(user => setData(user)),
     [setData],
