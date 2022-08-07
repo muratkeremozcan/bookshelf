@@ -2,7 +2,7 @@
 /node_modules
 
 # testing
-/coverage
+/coverage*
 /cypress/videos
 /cypress/screenshots
 
@@ -30,3 +30,4 @@ public/extra-*
 *.ignored.*
 ignored/
 .eslintcache
+combined-coverage

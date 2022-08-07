@@ -1,4 +1,5 @@
 const {defineConfig} = require('cypress')
+const codeCoverageTask = require('@bahmutov/cypress-code-coverage/plugin')
 // const isCI = require('is-ci')
 
 module.exports = defineConfig({
@@ -19,7 +20,7 @@ module.exports = defineConfig({
       //     ? 'http://localhost:3000'
       //     : 'http://localhost:8811'
       // }
-      return config
+      return Object.assign({}, config, codeCoverageTask(on, config))
     },
     baseUrl: 'http://localhost:3000',
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
@@ -34,9 +35,31 @@ module.exports = defineConfig({
           port: 3000,
         },
       },
+      mode: 'development',
+      devtool: false,
+      module: {
+        rules: [
+          // application and Cypress files are bundled like React components
+          // and instrumented using the babel-plugin-istanbul
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env', '@babel/preset-react'],
+                plugins: [
+                  'istanbul',
+                  ['@babel/plugin-transform-modules-commonjs', {loose: true}],
+                ],
+              },
+            },
+          },
+        ],
+      },
     },
     setupNodeEvents(on, config) {
-      return config
+      return Object.assign({}, config, codeCoverageTask(on, config))
     },
     specPattern: 'src/**/**/*.cy.{js,ts,jsx,tsx}',
   },

@@ -17,6 +17,7 @@ jobs:
         with:
           cache: 'npm'
           node-version: 16.10.0
+
       - uses: bahmutov/npm-install@v1.8.18
         with: {useRollingCache: true} # recommended for large projects
         env:
@@ -35,18 +36,19 @@ jobs:
       - name: unit-test
         run: npm test
 
-      # - name: Upload artifacts
-      #   uses: actions/upload-artifact@v3.1.0
-      #   with:
-      #     name: coverage
-      #     path: coverage/
-      #     retention-days: 1
-      # - name: ✅ Upload Jest coverage to Codecov
-      #   uses: codecov/codecov-action@v3
-      #   with:
-      #     directory: coverage/
-      #     flags: unit-test-coverage
-      #     token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: coverage
+          path: coverage/
+          retention-days: 1
+
+      - name: ✅ Upload Jest coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          directory: coverage/
+          flags: unit-test-coverage
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   lint:
     needs: install-dependencies
@@ -90,19 +92,19 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Upload artifacts (Coverage_step3)
-      #   uses: actions/upload-artifact@v3.1.0
-      #   with:
-      #     name: coverage-cy-e2e
-      #     path: coverage-cy/
-      #     retention-days: 1
+      - name: Upload artifacts (Coverage_step3)
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: coverage-cy-e2e
+          path: coverage-cy/
+          retention-days: 1
 
-      # - name: ✅ Upload e2e coverage to Codecov
-      #   uses: codecov/codecov-action@v3
-      #   with:
-      #     directory: coverage-cy/
-      #     flags: cypress-e2e-coverage
-      #     token: ${{ secrets.CODECOV_TOKEN }}
+      - name: ✅ Upload e2e coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          directory: coverage-cy/
+          flags: cypress-e2e-coverage
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   cypress-ct-test:
     # ran out of parallelization
@@ -132,16 +134,16 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  #     - name: Upload artifacts (Coverage_step3)
-  #       uses: actions/upload-artifact@v3.1.0
-  #       with:
-  #         name: coverage-cy-ct
-  #         path: coverage-cy/
-  #         retention-days: 1
+      - name: Upload artifacts (Coverage_step3)
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: coverage-cy-ct
+          path: coverage-cy/
+          retention-days: 1
 
-  #     - name: ✅ Upload CT coverage to Codecov
-  #       uses: codecov/codecov-action@v3
-  #       with:
-  #         directory: coverage-cy/
-  #         flags: cypress-ct-coverage
-  #         token: ${{ secrets.CODECOV_TOKEN }}
+      - name: ✅ Upload CT coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          directory: coverage-cy/
+          flags: cypress-ct-coverage
+          token: ${{ secrets.CODECOV_TOKEN }}
