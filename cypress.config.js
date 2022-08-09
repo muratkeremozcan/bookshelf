@@ -54,6 +54,8 @@ module.exports = defineConfig({
                       '@babel/plugin-transform-modules-commonjs',
                       {
                         loose: true,
+                        // we may need these in some repos including this one
+                        //  https://babeljs.io/docs/en/babel-plugin-transform-modules-commonjs
                         allowTopLevelThis: true,
                         importInterop: true,
                       },
