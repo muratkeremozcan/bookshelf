@@ -7,9 +7,6 @@
 ![cypress version](https://img.shields.io/badge/cypress-10.4.0-brightgreen)
 [![renovate-app badge][renovate-badge]][renovate-app]
 
-[renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
-[renovate-app]: https://renovateapp.com/
-
 This one is a fork of https://github.com/kentcdodds/bookshelf, with a few tweaks
 of my own and Cypress component tests. It's meant to be used as an experimental
 learning resource. All contributions are welcome.
@@ -32,3 +29,6 @@ yarn cy:run # headless version
 
 yarn test # run unit tests with jest
 ```
+
+[renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
+[renovate-app]: https://renovateapp.com/
