@@ -31,31 +31,39 @@ module.exports = defineConfig({
       framework: 'create-react-app',
       bundler: 'webpack',
       webpackConfig: {
+        // workaround to react scripts 5 issue https://github.com/cypress-io/cypress/issues/22762#issuecomment-1185677066
         devServer: {
-          port: 3000,
+          port: 3001,
         },
-      },
-      mode: 'development',
-      devtool: false,
-      module: {
-        rules: [
-          // application and Cypress files are bundled like React components
-          // and instrumented using the babel-plugin-istanbul
-          {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {
-              loader: 'babel-loader',
-              options: {
-                presets: ['@babel/preset-env', '@babel/preset-react'],
-                plugins: [
-                  'istanbul',
-                  ['@babel/plugin-transform-modules-commonjs', {loose: true}],
-                ],
+        mode: 'development',
+        devtool: false,
+        module: {
+          rules: [
+            // application and Cypress files are bundled like React components
+            // and instrumented using the babel-plugin-istanbul
+            {
+              test: /\.js$/,
+              exclude: /node_modules/,
+              use: {
+                loader: 'babel-loader',
+                options: {
+                  presets: ['@babel/preset-env', '@babel/preset-react'],
+                  plugins: [
+                    'istanbul',
+                    [
+                      '@babel/plugin-transform-modules-commonjs',
+                      {
+                        loose: true,
+                        allowTopLevelThis: true,
+                        importInterop: true,
+                      },
+                    ],
+                  ],
+                },
               },
             },
-          },
-        ],
+          ],
+        },
       },
     },
     setupNodeEvents(on, config) {
