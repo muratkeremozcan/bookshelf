@@ -5,7 +5,7 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import '@reach/tooltip/styles.css'
 const {listItems} = require('../../cypress/fixtures/list-items.json')
 
-describe('Rating', {viewportWidth: 600}, () => {
+describe('Rating', {viewportWidth: 600, defaultCommandTimeout: 10000}, () => {
   it('should update the rating ', () => {
     cy.intercept('PUT', /list-items/, {body: {success: true}}).as(
       'list-items-put',
