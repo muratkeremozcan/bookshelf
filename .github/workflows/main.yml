@@ -109,7 +109,7 @@ jobs:
   cypress-ct-test:
     strategy:
       matrix:
-        machines: [1, 2]
+        machines: [1, 2, 3]
     needs: [install-dependencies]
     runs-on: ubuntu-latest
     container: cypress/included:10.4.0 # save time on not having to install cypress
@@ -127,6 +127,7 @@ jobs:
           component: true
           browser: chrome
           record: true
+          parallel: true
           group: ct-tests
           tag: ct-tests
         env:
