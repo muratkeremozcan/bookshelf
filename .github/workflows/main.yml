@@ -107,10 +107,9 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
 
   cypress-ct-test:
-    # ran out of parallelization
-    # strategy:
-    #   matrix:
-    #     machines: [1, 2] # increase to 2 later: [1, 2]
+    strategy:
+      matrix:
+        machines: [1, 2, 3]
     needs: [install-dependencies]
     runs-on: ubuntu-latest
     container: cypress/included:10.4.0 # save time on not having to install cypress
@@ -128,6 +127,7 @@ jobs:
           component: true
           browser: chrome
           record: true
+          parallel: true
           group: ct-tests
           tag: ct-tests
         env:
