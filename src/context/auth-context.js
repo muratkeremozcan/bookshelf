@@ -39,7 +39,7 @@ async function bootstrapAppData() {
 const AuthContext = React.createContext()
 AuthContext.displayName = 'AuthContext'
 
-// [7.1] wrap the UI with the context’s Provider component, using the state as a prop
+// [7.1] wrap the UI with the context’s Provider component, using the state as a pre
 // the values that the hook gets (useAuth) are enabled here
 function AuthProvider(props) {
   const {

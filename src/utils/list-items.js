@@ -7,7 +7,7 @@ function useListItem(bookId, options) {
   return listItems?.find(li => li.bookId === bookId) ?? null
 }
 
-// [5] Caching
+// [6] Caching (react-query)
 // We can drastically simplify our UI state management if we split out the server cache into something separate
 // State can be lumped into two buckets:
 // (1) UI state: Modal is open, item is highlighted, etc.
