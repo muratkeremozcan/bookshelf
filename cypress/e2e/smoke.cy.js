@@ -1,6 +1,6 @@
 import {buildUser} from '../support/generate'
 
-describe('smoke', () => {
+describe('smoke', {defaultCommandTimeout: 10000}, () => {
   it('should allow a typical user flow', () => {
     const user = buildUser()
     cy.visit('/')

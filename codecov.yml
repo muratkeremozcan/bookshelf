@@ -11,5 +11,6 @@ coverage:
   ignore:
     # you can copy the files & folders from nyc to here
     # the format is the same
-notify:
-  after_n_builds: 5 # 3 CT parallel, 1 unit, 1 e2e
+codecov:
+  notify:
+    after_n_builds: 5 # 3 CT parallel, 1 unit, 1 e2e
