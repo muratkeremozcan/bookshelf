@@ -13,4 +13,4 @@ coverage:
     # the format is the same
 codecov:
   notify:
-    after_n_builds: 5 # 3 CT parallel, 1 unit, 1 e2e
+    after_n_builds: 2
