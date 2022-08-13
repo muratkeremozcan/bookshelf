@@ -20,14 +20,14 @@ npm run cy:run-ct # headless version
 
 # runs the ui and api servers, then opens e2e runner
 npm run cy:open-e2e
-yarn cy:run-e2e  # headless version
+npm run cy:run-e2e  # headless version
 
 # a la carte
-yarn start # start the ui and api server
-yarn cy:open # for cypress e2e test runner
-yarn cy:run # headless version
+npm start # start the ui and api server
+npm run cy:open # for cypress e2e test runner
+npm run cy:run # headless version
 
-yarn test # run unit tests with jest
+npm test # run unit tests with jest
 ```
 
 [renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg

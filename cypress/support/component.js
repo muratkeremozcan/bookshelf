@@ -18,6 +18,7 @@ import './commands'
 import '@testing-library/cypress/add-commands'
 import 'cypress-real-events/support'
 import '@bahmutov/cypress-code-coverage/support'
+import 'cypress-localstorage-commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

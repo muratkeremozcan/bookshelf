@@ -25,7 +25,9 @@ describe('Rating', {viewportWidth: 600}, () => {
 
     cy.wrap(Cypress._.range(1, 6)).each(star => {
       cy.getByCy(`rating-${star}`).click()
-      cy.get('@list-items-put').its('request.body.rating').should('eq', star)
+      cy.wait('@list-items-put', {timeout: 15000})
+        .its('request.body.rating')
+        .should('eq', star)
     })
   })
 })

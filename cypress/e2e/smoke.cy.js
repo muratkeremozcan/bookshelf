@@ -17,6 +17,8 @@ describe('smoke', () => {
       cy.findByRole('link', {name: /discover/i}).click()
     })
 
+    cy.getLocalStorage('__bookshelf_list_items__').should('not.exist')
+
     cy.findByRole('main').within(() => {
       cy.findByRole('searchbox', {name: /search/i}).type('Voice of war{enter}')
       cy.findByRole('listitem', {name: /voice of war/i}).within(() => {
@@ -24,7 +26,11 @@ describe('smoke', () => {
       })
     })
 
+    cy.getLocalStorage('__bookshelf_list_items__').should('exist')
+
     cy.findByRole('navigation').within(() => {
+      cy.findByRole('link', {name: /reading list/i}).click()
+      cy.findByRole('link', {name: /discover/i}).click()
       cy.findByRole('link', {name: /reading list/i}).click()
     })
 
