@@ -23,11 +23,9 @@ describe('Rating', {viewportWidth: 600}, () => {
       .should('be.visible')
       .within(() => cy.get('label').should('have.length', 5))
 
-    cy.wrap(Cypress._.range(1, 6)).each(star => {
-      cy.getByCy(`rating-${star}`).should('be.visible').click()
-      cy.get('@list-items-put', {timeout: 15000})
-        .its('request.body.rating')
-        .should('eq', star)
-    })
+    cy.getByCy(`rating-3`).should('be.visible').click()
+    cy.get('@list-items-put', {timeout: 15000})
+      .its('request.body.rating')
+      .should('eq', 3)
   })
 })
