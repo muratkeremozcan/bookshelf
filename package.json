@@ -12,7 +12,7 @@
   "dependencies": {
     "@emotion/react": "11.10.4",
     "@emotion/styled": "11.10.4",
-    "@reach/dialog": "0.17.0",
+    "@reach/dialog": "0.18.0",
     "@reach/menu-button": "0.18.0",
     "@reach/tabs": "0.17.0",
     "@reach/tooltip": "0.17.0",
