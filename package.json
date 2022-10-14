@@ -16,7 +16,7 @@
     "@reach/menu-button": "0.18.0",
     "@reach/tabs": "0.18.0",
     "@reach/tooltip": "0.17.0",
-    "@reach/visually-hidden": "0.17.0",
+    "@reach/visually-hidden": "0.18.0",
     "bootstrap": "5.2.2",
     "codegen.macro": "4.1.0",
     "debounce-fn": "4.0.0",
