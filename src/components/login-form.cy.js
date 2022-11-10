@@ -2,7 +2,6 @@ import React from 'react'
 import LoginForm from './login-form'
 import {buildUser} from '../test/generate'
 import {Button} from './lib'
-import * as hooks from '../utils/hooks'
 
 describe('LoginForm', () => {
   let stub
