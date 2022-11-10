@@ -19,6 +19,7 @@ describe('smoke', () => {
 
     cy.getLocalStorage('__bookshelf_list_items__').should('not.exist')
 
+    cy.getLocalStorage('__bookshelf_list_items__').should('not.exist')
     cy.findByRole('main').within(() => {
       cy.findByRole('searchbox', {name: /search/i}).type('Voice of war{enter}')
       cy.findByRole('listitem', {name: /voice of war/i}).within(() => {
@@ -27,17 +28,20 @@ describe('smoke', () => {
     })
 
     cy.getLocalStorage('__bookshelf_list_items__').should('exist')
+    cy.getLocalStorage('__bookshelf_users__').should('exist')
+    cy.getLocalStorage('__auth_provider_token__').should('exist')
 
-    cy.findByRole('navigation').within(() => {
-      cy.findByRole('link', {name: /reading list/i}).click()
-      cy.findByRole('link', {name: /discover/i}).click()
-      cy.findByRole('link', {name: /reading list/i}).click()
-    })
+    cy.findByRole('link', {name: /reading list/i}).click()
+    cy.location('pathname').should('eq', '/list')
+    cy.get('p').should('not.exist')
+    cy.getByClassLike('BookRow')
 
     cy.findByRole('main').within(() => {
       cy.findAllByRole('listitem').should('have.length', 1)
       cy.findByRole('link', {name: /voice of war/i}).click()
     })
+
+    cy.url().should('include', '/book/')
 
     cy.findByRole('textbox', {name: /notes/i}).type('This is an awesome book')
     cy.findByLabelText(/loading/i).should('exist')
