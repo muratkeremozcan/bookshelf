@@ -20,6 +20,7 @@ describe('Rating', {viewportWidth: 600}, () => {
     )
 
     cy.getByClassLike('Rating')
+      .first()
       .should('be.visible')
       .within(() => cy.get('label').should('have.length', 5))
 
