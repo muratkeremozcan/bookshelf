@@ -10,7 +10,7 @@
     "npm": ">=6"
   },
   "dependencies": {
-    "@emotion/react": "11.10.4",
+    "@emotion/react": "11.10.5",
     "@emotion/styled": "11.10.4",
     "@reach/dialog": "0.18.0",
     "@reach/menu-button": "0.18.0",
