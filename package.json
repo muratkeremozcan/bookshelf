@@ -31,7 +31,7 @@
     "react-icons": "4.7.1",
     "react-query": "2.26.4",
     "react-query-devtools": "2.6.3",
-    "react-router": "6.6.0",
+    "react-router": "6.6.1",
     "react-router-dom": "6.6.1",
     "react-scripts": "5.0.1",
     "stop-runaway-react-effects": "2.0.0"
