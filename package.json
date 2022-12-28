@@ -52,7 +52,7 @@
     "cypress": "12.2.0",
     "cypress-hmr-restarter": "2.1.0",
     "cypress-localstorage-commands": "^2.2.0",
-    "cypress-real-events": "1.7.4",
+    "cypress-real-events": "1.7.6",
     "eslint-plugin-cypress": "2.12.1",
     "husky": "4.3.8",
     "inquirer": "9.1.4",
