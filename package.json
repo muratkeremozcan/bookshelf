@@ -50,7 +50,7 @@
     "babel-loader": "^9.0.0",
     "cross-env": "7.0.3",
     "cypress": "12.10.0",
-    "cypress-hmr-restarter": "2.1.0",
+    "cypress-hmr-restarter": "2.1.1",
     "cypress-localstorage-commands": "^2.2.0",
     "cypress-real-events": "1.7.6",
     "eslint-plugin-cypress": "2.13.2",
