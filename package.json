@@ -49,7 +49,7 @@
     "@types/react-dom": "18.2.4",
     "babel-loader": "^9.0.0",
     "cross-env": "7.0.3",
-    "cypress": "12.11.0",
+    "cypress": "12.12.0",
     "cypress-hmr-restarter": "2.1.1",
     "cypress-localstorage-commands": "^2.2.0",
     "cypress-real-events": "1.7.6",
