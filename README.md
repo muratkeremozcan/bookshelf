@@ -4,7 +4,7 @@
 [![bookshelf](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/r9paau&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/r9paau/runs)
 ![react version](https://img.shields.io/badge/react-18.2.0-brightgreen)
 ![react-scripts version](https://img.shields.io/badge/react--scripts-5.0.1-brightgreen)
-![cypress version](https://img.shields.io/badge/cypress-12.16.0-brightgreen)
+![cypress version](https://img.shields.io/badge/cypress-12.17.0-brightgreen)
 [![renovate-app badge][renovate-badge]][renovate-app]
 
 This one is a fork of https://github.com/kentcdodds/bookshelf, with a few tweaks
