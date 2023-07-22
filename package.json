@@ -69,7 +69,7 @@
     "resolve": "1.22.3",
     "serve": "14.2.0",
     "start-server-and-test": "2.0.0",
-    "whatwg-fetch": "3.6.16"
+    "whatwg-fetch": "3.6.17"
   },
   "scripts": {
     "start": "react-scripts -r @cypress/instrument-cra start",
