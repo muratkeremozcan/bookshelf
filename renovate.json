@@ -9,7 +9,8 @@
   "labels": ["type: dependencies", "renovate"],
   "packageRules": [
     {
-      "packageNames": ["@reach/visually-hidden", "husky"],
+      "packagePatterns": ["*"],
+      "excludePackagePatterns": ["cypress", "@cypress/code-coverage"],
       "enabled": false
     }
   ]
